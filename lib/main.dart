@@ -19,47 +19,41 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final counterBlock = CounterBlock();
+  String id = "";
+  String name = "";
+
+  String stringSubOperation(String inputString) {
+    return inputString.substring(0, inputString.indexOf("_"));//0 'dan başla _ görene kadar devam et, _ gördükten sonra kalan kısmı sil at
+  }
+
+  String nameSubStringOperation(String inputName) {
+    //return inputName.substring(inputName.indexOf("_")+1);//_ gördükten sonra bir eleman olan kendisini atla ve yazdır
+    //return inputName.substring(inputName.indexOf("_")+3);//_ gördükten sonra iki eleman olan ve  kendisi de dahil  atla ve yazdır
+    return inputName.substring(inputName.indexOf("_"),3);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    id = stringSubOperation("halil_mert");
+    name = nameSubStringOperation("_Halil");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Stream usages",
-          textAlign: TextAlign.center,
-        ),
+        title: const Text("String manipulation"),
       ),
-      body: Center(
-          child: StreamBuilder<int>(
-            stream: counterBlock.counterStream,
-            initialData: 0,
-            builder: (context, snapshot) {
-              return Text(
-                'Counter: ${snapshot.data}',
-                style: TextStyle(fontSize: 24),
-              );
-            },
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              id + " = " + name,
+            ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            counterBlock.incrementCounter();
-          },
-          child: Icon(Icons.add),
-        ),
-      
+        ],
+      ),
     );
-  }
-}
-
-class CounterBlock {
-  final _counterController = StreamController<int>();
-  Stream<int> get counterStream => _counterController.stream;
-
-  int _counter = 0;
-
-  void incrementCounter() {
-    _counter++;
-    _counterController.sink.add(_counter);
   }
 }
