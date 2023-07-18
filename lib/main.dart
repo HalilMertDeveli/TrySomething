@@ -11,6 +11,8 @@ void main() {
   );
 }
 
+// 
+
 class HomePage extends StatefulWidget {
   final String userName;
   final String userSurName;
@@ -22,29 +24,44 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final elementForList = ["element 1", "element 2", "element 3"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Some class operation",
+          "Sorting element in Listview builder",
           style: TextStyle(
-            color: Colors.black12,
-            fontWeight: FontWeight.bold,
-            fontSize: 23,
-          ),
-          textAlign: TextAlign.center,
+              color: Colors.amber, fontSize: 33, fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
         children: [
-          Center(
-            child: Text("userName: ${widget.userName}"),
+          Expanded(
+            child: ListView.builder(
+              itemCount:elementForList.length,
+              itemBuilder: (BuildContext context, int index) {
+                //int reversedIndex = elementForList.length-index -1;
+              return ListTile(
+                title: Text(
+                  elementForList[index].toString(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                  index.toString(),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
+                ),
+              );
+            }),
           ),
-          SizedBox(
-            height: 22,
-          ),
-          Text("user sur name: ${widget.userSurName}"),
         ],
       ),
     );
