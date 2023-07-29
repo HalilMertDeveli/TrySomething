@@ -21,4 +21,8 @@ class DatabaseService {
   }
 
   Future createGroup(String userName, String userId, String groupName) async {}
+
+  Future<Stream> getGroupMember(String groupId)async{
+    return groupsCollection.doc(groupId).snapshots();
+  }
 }
