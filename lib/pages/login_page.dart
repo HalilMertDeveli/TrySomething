@@ -49,10 +49,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextField(
               decoration: InputDecoration(
-                  border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(49)),
-                  focusedBorder:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(49)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(49)),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(49)),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(49),
                   ),
@@ -68,18 +68,20 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextField(
               decoration: InputDecoration(
-                  border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(49)),
-                  focusedBorder:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(49)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(49)),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(49)),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(49),
                   ),
                   label: Text("Enter your password")),
               onChanged: (value) {
-                setState(() {
-                  userPassword = value;
-                });
+                setState(
+                  () {
+                    userPassword = value;
+                  },
+                );
               },
             ),
             ElevatedButton(
